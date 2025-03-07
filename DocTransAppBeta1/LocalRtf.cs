@@ -25,7 +25,7 @@ namespace DocTransAppBeta1
         public bool IsStrikeout { get; set; }
         public bool IsImage { get; set; }
         public Color BackgroundColor { get; set; }
-        public Color Foreground { get; set; }
+        public Color ForegroundColor { get; set; }
         private string? __content;
         public string? Content
         {
@@ -114,7 +114,7 @@ namespace DocTransAppBeta1
                             else if (style.Contains("color: "))
                             {
                                 var colorCode = style.Split(':')[1].Trim();
-                                segment.Foreground = ColorTranslator.FromHtml(colorCode);
+                                segment.ForegroundColor = ColorTranslator.FromHtml(colorCode);
                             }
                             else if (style.Contains("text-decoration: line-through"))
                                 segment.IsStrikeout = true;
@@ -147,7 +147,7 @@ namespace DocTransAppBeta1
                             childSegment.IsItalic |= segment.IsItalic;
                             childSegment.IsUnderline |= segment.IsUnderline;
                             childSegment.IsStrikeout |= segment.IsStrikeout;
-                            childSegment.Foreground = segment.Foreground;
+                            childSegment.ForegroundColor = segment.ForegroundColor;
                             localList.Add(segment);
                         }
                     }
@@ -184,7 +184,7 @@ namespace DocTransAppBeta1
                 IsUnderline = inheritedStyles.IsUnderline,
                 IsStrikeout = inheritedStyles.IsStrikeout,
                 BackgroundColor = inheritedStyles.BackgroundColor,
-                Foreground = inheritedStyles.Foreground
+                ForegroundColor = inheritedStyles.ForegroundColor
             };
             if (node.Attributes["style"] != null)
             {
@@ -214,7 +214,7 @@ namespace DocTransAppBeta1
                                     currentStyles.IsItalic = true;
                                 break;
                             case "color":
-                                currentStyles.Foreground = ColorTranslator.FromHtml(value);
+                                currentStyles.ForegroundColor = ColorTranslator.FromHtml(value);
                                 break;
                             case "background-color":
                                 currentStyles.BackgroundColor = ColorTranslator.FromHtml(value);
@@ -288,7 +288,7 @@ namespace DocTransAppBeta1
                             else if (style.Contains("color: "))
                             {
                                 var colorCode = style.Split(':')[1].Trim();
-                                segment.Foreground = ColorTranslator.FromHtml(colorCode);
+                                segment.ForegroundColor = ColorTranslator.FromHtml(colorCode);
                             }
                             else if (style.Contains("text-decoration: line-through"))
                                 segment.IsStrikeout = true;
@@ -326,7 +326,7 @@ namespace DocTransAppBeta1
                             childSegment.IsItalic |= segment.IsItalic;
                             childSegment.IsUnderline |= segment.IsUnderline;
                             childSegment.IsStrikeout |= segment.IsStrikeout;
-                            childSegment.Foreground = segment.Foreground;
+                            childSegment.ForegroundColor = segment.ForegroundColor;
                             localList.Add(segment);
                             //yield return segment;
                         }
@@ -360,7 +360,7 @@ namespace DocTransAppBeta1
                             else if (style.Contains("color: "))
                             {
                                 var colorCode = style.Split(':')[1].Trim();
-                                segment.Foreground = ColorTranslator.FromHtml(colorCode);
+                                segment.ForegroundColor = ColorTranslator.FromHtml(colorCode);
                             }
                             else if (style.Contains("text-decoration: line-through"))
                                 segment.IsStrikeout = true;

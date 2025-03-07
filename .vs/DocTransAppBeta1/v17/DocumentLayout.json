@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\localrtf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\localrtf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,44 +31,16 @@
       "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pageseditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pdfstructure\\doctransbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pdfstructure\\doctransbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pdfstructure\\doctranspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pdfstructure\\doctranspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pdfstructure\\doctransdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pdfstructure\\doctransdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pdfstructure\\docmakesegment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pdfstructure\\docmakesegment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\pdfstructure\\docmakewhole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\pdfstructure\\docmakewhole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\doctransconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\doctransconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\docmodules\\doclayoutitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\docmodules\\doclayoutitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\doctransappbeta1\\usercontrols\\docimlabelbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\docimlabelbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\usercontrols\\docimlabelbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\docimlabelbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\doctransappbeta1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -81,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|c:\\users\\56279\\source\\repos\\doctransappbeta1\\doctransappbeta1\\usercontrols\\fontpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\fontpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B01298A8-3DCE-47A7-910F-5E897C04AEC9}|DocTransAppBeta1\\DocTransAppBeta1.csproj|solutionrelative:doctransappbeta1\\usercontrols\\docimplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -103,19 +67,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "LocalRtf.cs",
+              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\LocalRtf.cs",
+              "RelativeDocumentMoniker": "DocTransAppBeta1\\LocalRtf.cs",
+              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\LocalRtf.cs",
+              "RelativeToolTip": "DocTransAppBeta1\\LocalRtf.cs",
+              "ViewState": "AgIAAMoAAAAAAAAAAADgv9cAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T11:28:36.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Utility.cs",
+              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Utility.cs",
+              "RelativeDocumentMoniker": "DocTransAppBeta1\\Utility.cs",
+              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Utility.cs",
+              "RelativeToolTip": "DocTransAppBeta1\\Utility.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwBYAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T11:17:38.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\MainForm.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\MainForm.cs",
               "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\MainForm.cs",
               "RelativeToolTip": "DocTransAppBeta1\\MainForm.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAowEgAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAMkCAAAAAAAAAADwvw0DAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-25T14:29:13.637Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "MainForm.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\MainForm.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\MainForm.cs",
@@ -127,33 +117,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "OCRServiceHost.cs",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\OCRServiceHost.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\OCRServiceHost.cs",
               "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\OCRServiceHost.cs",
               "RelativeToolTip": "DocTransAppBeta1\\OCRServiceHost.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAYwDEAAABPAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAewCsAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T10:46:16.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "StructureServiceHost.cs",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\StructureServiceHost.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\StructureServiceHost.cs",
               "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\StructureServiceHost.cs",
               "RelativeToolTip": "DocTransAppBeta1\\StructureServiceHost.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAwBkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAewDYAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T10:54:27.072Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "PagesEditor.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PagesEditor.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\PagesEditor.cs",
@@ -171,14 +161,14 @@
               "RelativeDocumentMoniker": "DocTransAppBeta1\\PagesEditor.cs",
               "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PagesEditor.cs",
               "RelativeToolTip": "DocTransAppBeta1\\PagesEditor.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAM4AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAANEAAAAAAAAAAAAvwNwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T14:57:21.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DocTransBox.cs",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocTransBox.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\PdfStructure\\DocTransBox.cs",
@@ -191,149 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Utility.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Utility.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\Utility.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Utility.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\Utility.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAAiwK4AAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T11:54:38.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DocImPlayer.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImPlayer.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\UserControls\\DocImPlayer.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImPlayer.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\UserControls\\DocImPlayer.cs",
-              "ViewState": "AgIAAHABAAAAAAAAAAAiwHUBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T12:01:56.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DocMakeWhole.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocMakeWhole.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\PdfStructure\\DocMakeWhole.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocMakeWhole.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\PdfStructure\\DocMakeWhole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T16:06:23.521Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DocTransPage.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocTransPage.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\PdfStructure\\DocTransPage.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocTransPage.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\PdfStructure\\DocTransPage.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEIAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T09:05:14.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DocTransConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransConfiguration.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\DocTransConfiguration.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransConfiguration.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\DocTransConfiguration.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAkwCkAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:26:04.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DocMakeSegment.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocMakeSegment.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\PdfStructure\\DocMakeSegment.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocMakeSegment.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\PdfStructure\\DocMakeSegment.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAD4vwoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-28T16:06:09.585Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "DocTransDocument.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocTransDocument.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\PdfStructure\\DocTransDocument.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\PdfStructure\\DocTransDocument.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\PdfStructure\\DocTransDocument.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T12:49:56.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DocLayoutItem.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocModules\\DocLayoutItem.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\DocModules\\DocLayoutItem.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocModules\\DocLayoutItem.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\DocModules\\DocLayoutItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T10:00:22.018Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Program.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\Program.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\Program.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\Program.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAkwCUAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:36:39.3Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DocImLabelBox.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImLabelBox.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "DocTransAppBeta1\\UserControls\\DocImLabelBox.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T14:18:55.138Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DocImLabelBox.cs",
-              "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "RelativeDocumentMoniker": "DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "ToolTip": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "RelativeToolTip": "DocTransAppBeta1\\UserControls\\DocImLabelBox.cs",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAowPQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T14:29:42.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
               "Title": "DocTransAppBeta1.csproj",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\DocTransAppBeta1.csproj",
@@ -346,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 11,
               "Title": "FontPanel.cs",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\FontPanel.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\UserControls\\FontPanel.cs",
@@ -359,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 7,
               "Title": "DocImPlayer.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\UserControls\\DocImPlayer.cs",
               "RelativeDocumentMoniker": "DocTransAppBeta1\\UserControls\\DocImPlayer.cs",

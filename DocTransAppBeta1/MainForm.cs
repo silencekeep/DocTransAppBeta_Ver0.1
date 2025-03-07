@@ -16,7 +16,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-
 using Image = System.Drawing.Image;
 
 namespace DocTransAppBeta1
@@ -71,7 +70,7 @@ namespace DocTransAppBeta1
             catch { }
         }
         //加速识别的异步方法
-        private void __ocr(int index, Image img) 
+        private void __ocr(int index, Image img)
         {
             //DocImPlayer player = new DocImPlayer();
             //player.Dock = DockStyle.Fill;
@@ -258,7 +257,7 @@ namespace DocTransAppBeta1
                 //var inference_result = analyzer.Inference(input_tensor);
                 //DocLayoutAnalyzer.OutputFittingWithRatio(ref inference_result, ratio, offset);
                 //var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
-                
+
                 //就是切换UI中对应的控件
                 panel1.Controls.Clear();
                 panel2.Controls.Clear();
@@ -427,209 +426,209 @@ namespace DocTransAppBeta1
                 BetaVersionDebugPrinter.WriteLine($"导出第{i}页了", "parser");
             }
             BetaVersionDebugPrinter.WriteLine($"导出结构体完成", "parser");
-            //if(false)
-            //启动翻译（显而易见的逻辑）
-            foreach (var pg in pages)
-            {
-                if (pg.IsFixedPage)
+            if (false)
+                //启动翻译（显而易见的逻辑）
+                foreach (var pg in pages)
                 {
-                    foreach (var box in pg.Contents)
+                    if (pg.IsFixedPage)
                     {
-                        if (box is DocTransTitleBox b1)
+                        foreach (var box in pg.Contents)
                         {
-                            if (!b1.IsLogo)
+                            if (box is DocTransTitleBox b1)
                             {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b1.Text, out u);
-                                b1.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b1.TranslatedText = v;
-                            }
-                        }
-                        else if (box is DocTransPlainTextBox b2)
-                        {
-                            string u = "";
-                            string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                            OllamaApis.DoTextSegmentSync(k, out u);
-                            b2.Text = u;
-                            string v = "";
-                            OllamaApis.TranslateTextSync(u, out v);
-                            b2.TranslatedText = v;
-                        }
-                        else if (box is DocTransAbandonBox b3)
-                        {
-                            if (!b3.IsLogo)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b3.Text, out u);
-                                b3.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b3.TranslatedText = v;
-                            }
-                        }
-                        //else if (box is DocTransFigureBox b4)
-                        //{
-                        //}
-                        else if (box is DocTransTableBox b5)
-                        {
-                            if (!b5.IsRawImage)
-                            {
-                                string u = "";
-                                OllamaApis.TranslateHTMLSync(b5.Text, out u);
-                                b5.TranslatedText = u;
-                            }
-                        }
-                        //else if (box is DocTransFormulaBox b6)
-                        //{
-                        //}
-                        else if (box is DocTransCaptionBox b7)
-                        {
-                            if (!b7.IsRawImage)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b7.Text, out u);
-                                b7.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b7.TranslatedText = v;
-                            }
-                        }
-                    }
-                    foreach (var box in pg.Abandons)
-                    {
-                        if (box is DocTransAbandonBox b1)
-                        {
-                            if (!b1.IsLogo)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b1.Text, out u);
-                                b1.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b1.TranslatedText = v;
-                            }
-                        }
-                    }
-                    foreach (var box in pg.Captions)
-                    {
-                        if (box is DocTransCaptionBox b1)
-                        {
-                            if (!b1.IsRawImage)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b1.Text, out u);
-                                b1.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b1.TranslatedText = v;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (var box in pg.Artery)
-                    {
-                        if (box is DocTransTitleBox b1)
-                        {
-                            if (!b1.IsLogo)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b1.Text, out u);
-                                b1.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b1.TranslatedText = v;
-                            }
-                        }
-                        else if (box is DocTransPlainTextBox b2)
-                        {
-                            string u = "";
-                            string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                            OllamaApis.DoTextSegmentSync(k, out u);
-                            b2.Text = u;
-                            string v = "";
-                            OllamaApis.TranslateTextSync(u, out v);
-                            b2.TranslatedText = v;
-                        }
-                        else if (box is DocTransAbandonBox b3)
-                        {
-                            if (!b3.IsLogo)
-                            {
-                                string u = "";
-                                OllamaApis.DoTextSegmentSync(b3.Text, out u);
-                                b3.Text = u;
-                                string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
-                                b3.TranslatedText = v;
-                            }
-                        }
-                        //else if (box is DocTransFigureBox b4)
-                        //{
-                        //}
-                        else if (box is DocTransTableBox b5)
-                        {
-                            if (!b5.IsRawImage)
-                            {
-                                string u = "";
-                                OllamaApis.TranslateHTMLSync(b5.Text, out u);
-                                b5.TranslatedText = u;
-                            }
-                            if (b5.Caption != null)
-                            {
-                                if (!b5.Caption.IsRawImage)
+                                if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b5.Caption.Text, out u);
-                                    b5.Caption.Text = u;
+                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    b1.Text = u;
                                     string v = "";
                                     OllamaApis.TranslateTextSync(u, out v);
-                                    b5.Caption.TranslatedText = v;
+                                    b1.TranslatedText = v;
+                                }
+                            }
+                            else if (box is DocTransPlainTextBox b2)
+                            {
+                                string u = "";
+                                string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
+                                OllamaApis.DoTextSegmentSync(k, out u);
+                                b2.Text = u;
+                                string v = "";
+                                OllamaApis.TranslateTextSync(u, out v);
+                                b2.TranslatedText = v;
+                            }
+                            else if (box is DocTransAbandonBox b3)
+                            {
+                                if (!b3.IsLogo)
+                                {
+                                    string u = "";
+                                    OllamaApis.DoTextSegmentSync(b3.Text, out u);
+                                    b3.Text = u;
+                                    string v = "";
+                                    OllamaApis.TranslateTextSync(u, out v);
+                                    b3.TranslatedText = v;
+                                }
+                            }
+                            //else if (box is DocTransFigureBox b4)
+                            //{
+                            //}
+                            else if (box is DocTransTableBox b5)
+                            {
+                                if (!b5.IsRawImage)
+                                {
+                                    string u = "";
+                                    OllamaApis.TranslateHTMLSync(b5.Text, out u);
+                                    b5.TranslatedText = u;
+                                }
+                            }
+                            //else if (box is DocTransFormulaBox b6)
+                            //{
+                            //}
+                            else if (box is DocTransCaptionBox b7)
+                            {
+                                if (!b7.IsRawImage)
+                                {
+                                    string u = "";
+                                    OllamaApis.DoTextSegmentSync(b7.Text, out u);
+                                    b7.Text = u;
+                                    string v = "";
+                                    OllamaApis.TranslateTextSync(u, out v);
+                                    b7.TranslatedText = v;
                                 }
                             }
                         }
-                        else if (box is DocTransFormulaBox b6)
+                        foreach (var box in pg.Abandons)
                         {
-                            if (b6.Caption != null)
+                            if (box is DocTransAbandonBox b1)
                             {
-                                if (!b6.Caption.IsRawImage)
+                                if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b6.Caption.Text, out u);
-                                    b6.Caption.Text = u;
+                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    b1.Text = u;
                                     string v = "";
                                     OllamaApis.TranslateTextSync(u, out v);
-                                    b6.Caption.TranslatedText = v;
+                                    b1.TranslatedText = v;
                                 }
                             }
                         }
-                        else if (box is DocTransFigureBox b7)
+                        foreach (var box in pg.Captions)
                         {
-                            if (b7.Caption != null)
+                            if (box is DocTransCaptionBox b1)
                             {
-                                if (!b7.Caption.IsRawImage)
+                                if (!b1.IsRawImage)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b7.Caption.Text, out u);
-                                    b7.Caption.Text = u;
+                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    b1.Text = u;
                                     string v = "";
                                     OllamaApis.TranslateTextSync(u, out v);
-                                    b7.Caption.TranslatedText = v;
+                                    b1.TranslatedText = v;
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        foreach (var box in pg.Artery)
+                        {
+                            if (box is DocTransTitleBox b1)
+                            {
+                                if (!b1.IsLogo)
+                                {
+                                    string u = "";
+                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    b1.Text = u;
+                                    string v = "";
+                                    OllamaApis.TranslateTextSync(u, out v);
+                                    b1.TranslatedText = v;
+                                }
+                            }
+                            else if (box is DocTransPlainTextBox b2)
+                            {
+                                string u = "";
+                                string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
+                                OllamaApis.DoTextSegmentSync(k, out u);
+                                b2.Text = u;
+                                string v = "";
+                                OllamaApis.TranslateTextSync(u, out v);
+                                b2.TranslatedText = v;
+                            }
+                            else if (box is DocTransAbandonBox b3)
+                            {
+                                if (!b3.IsLogo)
+                                {
+                                    string u = "";
+                                    OllamaApis.DoTextSegmentSync(b3.Text, out u);
+                                    b3.Text = u;
+                                    string v = "";
+                                    OllamaApis.TranslateTextSync(u, out v);
+                                    b3.TranslatedText = v;
+                                }
+                            }
+                            //else if (box is DocTransFigureBox b4)
+                            //{
+                            //}
+                            else if (box is DocTransTableBox b5)
+                            {
+                                if (!b5.IsRawImage)
+                                {
+                                    string u = "";
+                                    OllamaApis.TranslateHTMLSync(b5.Text, out u);
+                                    b5.TranslatedText = u;
+                                }
+                                if (b5.Caption != null)
+                                {
+                                    if (!b5.Caption.IsRawImage)
+                                    {
+                                        string u = "";
+                                        OllamaApis.DoTextSegmentSync(b5.Caption.Text, out u);
+                                        b5.Caption.Text = u;
+                                        string v = "";
+                                        OllamaApis.TranslateTextSync(u, out v);
+                                        b5.Caption.TranslatedText = v;
+                                    }
+                                }
+                            }
+                            else if (box is DocTransFormulaBox b6)
+                            {
+                                if (b6.Caption != null)
+                                {
+                                    if (!b6.Caption.IsRawImage)
+                                    {
+                                        string u = "";
+                                        OllamaApis.DoTextSegmentSync(b6.Caption.Text, out u);
+                                        b6.Caption.Text = u;
+                                        string v = "";
+                                        OllamaApis.TranslateTextSync(u, out v);
+                                        b6.Caption.TranslatedText = v;
+                                    }
+                                }
+                            }
+                            else if (box is DocTransFigureBox b7)
+                            {
+                                if (b7.Caption != null)
+                                {
+                                    if (!b7.Caption.IsRawImage)
+                                    {
+                                        string u = "";
+                                        OllamaApis.DoTextSegmentSync(b7.Caption.Text, out u);
+                                        b7.Caption.Text = u;
+                                        string v = "";
+                                        OllamaApis.TranslateTextSync(u, out v);
+                                        b7.Caption.TranslatedText = v;
+                                    }
+                                }
+                            }
 
+                        }
                     }
-                }
 
-                BetaVersionDebugPrinter.WriteLine("完成一页了", "parser");
-                //pg
-            }
+                    BetaVersionDebugPrinter.WriteLine("完成一页了", "parser");
+                    //pg
+                }
             MainForm.ProcPages = pages;
             //对所有引用执行翻译（如果可翻译）
-            
+
         }
 
         private void button_AutoRelation_Click(object sender, EventArgs e)
@@ -666,6 +665,7 @@ namespace DocTransAppBeta1
             }
             try
             {
+
                 Document.Create(container =>
                 {
                     container.Page(page =>
@@ -703,7 +703,6 @@ namespace DocTransAppBeta1
                             //column.RelativeItem()
 
                             column.Spacing(10); // 设置段落之间的间距10
-
                             for (int i = 0; i < MainForm.ProcPages.Count; i++)
                             {
                                 var pg = MainForm.ProcPages[i];
@@ -713,7 +712,7 @@ namespace DocTransAppBeta1
                                 column.Spacing(pg.IsFixedPage ? 0 : col_spacing_pix);
                                 if (pg.IsFixedPage)
                                 {
-
+                                    //if(false)
                                     foreach (var a in pg.Contents)
                                     {
                                         var kt = column.Item().Unconstrained()
@@ -749,12 +748,18 @@ namespace DocTransAppBeta1
                                                         kt = kt.AlignRight();
                                                         break;
                                                 }
-                                                //.MaxHeight(a.Height)
-                                                //int max_line_count = (int)Math.Ceiling(1.0 * b.Height / (1.0 * b.FontSize * 4 * 72 / 300 + col_spacing_pix));
+                                                kt = kt.MaxHeight(a.Height);
+                                                ////int max_line_count = (int)Math.Ceiling(1.0 * b.Height / (1.0 * b.FontSize * 4 * 72 / 300 + col_spacing_pix));
                                                 string txt = string.IsNullOrEmpty(b.TranslatedText) ? b.Text ?? "" : b.TranslatedText.Trim();
-                                                kt.Text(txt.Trim()).Justify().FontFamily(b.FontName).FontSize(b.FontSize).LineHeight(1.0f);//.ClampLines(max_line_count, "<TRUNCATED>");
+                                                ////kt = kt.MaxHeight(b.Height);
+                                                kt.Text(txt.Trim()).Justify().FontFamily(b.FontName).FontSize(b.FontSize);//.LineHeight(1.0f);//.ClampLines(max_line_count, "<TRUNCATED>");
+                                                //kt.Text(txt =>
+                                                //{
+
+                                                //});
                                             }
                                         }
+                                        
                                         if (a is DocTransPlainTextBox c)
                                         {
                                             switch (c.InnerAlignMode)
@@ -774,7 +779,35 @@ namespace DocTransAppBeta1
                                             }
                                             //int max_line_count = (int)Math.Ceiling(1.0 * c.Height / (1.0 * c.FontSize * 4 * 72 / 300 + col_spacing_pix));
                                             string txt = (c.AutoIndentation ? "    " : "") + (string.IsNullOrEmpty(c.TranslatedText) ? c.Text : c.TranslatedText.Trim());
-                                            kt.Text(txt.TrimEnd()).Justify().FontFamily(c.FontName).FontSize(c.FontSize).LineHeight(plainTextHeight);//.ClampLines(max_line_count, "<TRUNCATED>");
+                                            kt = kt.MaxHeight(c.Height);
+                                            if (LocalRtf.IsRtf(txt))
+                                            {
+                                                var list = LocalRtf.RtfStyleParse(txt);
+                                                kt.Text(txt =>
+                                                {
+                                                    foreach (var i in list)
+                                                    {
+
+                                                        if (i.IsImage)
+                                                        {
+                                                            txt.Element().Image(Convert.FromBase64String(i.Content));
+                                                        }
+                                                        else
+                                                        {
+                                                            var txt2 = txt.Span(i.Content)
+                                                            .FontColor(QuestPDF.Infrastructure.Color.FromARGB(255, i.ForegroundColor.R, i.ForegroundColor.G, i.ForegroundColor.B))
+                                                            .FontFamily(c.FontName).FontSize(c.FontSize).LineHeight(plainTextHeight);
+                                                            if (i.IsBold) txt2 = txt2.Bold();
+                                                            if (i.IsItalic) txt2 = txt2.Italic();
+                                                            if (i.IsStrikeout) txt2 = txt2.Strikethrough();
+                                                            if (i.IsUnderline) txt2 = txt2.Underline();
+
+                                                            //txt2 = txt2.BackgroundColor(QuestPDF.Infrastructure.Color.FromARGB(i.BackgroundColor.A, i.BackgroundColor.R, i.BackgroundColor.G, i.BackgroundColor.B));
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                            else kt.Text(txt.TrimEnd()).Justify().FontFamily(c.FontName).FontSize(c.FontSize).LineHeight(plainTextHeight);//.ClampLines(max_line_count, "<TRUNCATED>");
                                         }
                                         if (a is DocTransTableBox d)
                                         {
@@ -892,7 +925,7 @@ namespace DocTransAppBeta1
                     //    // 继续单列内容
                     //    col.Item().Text("后续内容").FontColor(Colors.Red);
                     //});
-                }).GeneratePdfAndShow();//"C:\\Users\\56279\\Desktop\\Output.pdf");
+                }).GeneratePdfAndShow(); //("C:\\Users\\56279\\Desktop\\Output2.pdf");////
             }
             catch (Exception ex)
             {

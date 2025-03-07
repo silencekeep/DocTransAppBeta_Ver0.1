@@ -15,16 +15,16 @@ namespace DocTransAppBeta1
     /// </summary>
     public static class Utility
     {
-        public static class DllExportCall
-        {
-            public const IntPtr STD_OUTPUT_HANDLE = -11;
-            [DllImport("Kernel32.dll")]
-            //闭嘴函数1
-            public extern static bool SetStdHandle(IntPtr nStdHandle, SafeHandleZeroOrMinusOneIsInvalid handle);
-            [DllImport("Kernel32.dll")]
-            //闭嘴函数2
-            public extern static SafePipeHandle GetStdHandle(IntPtr nStdHandle);
-        }
+        //public static class DllExportCall
+        //{
+        //    public const IntPtr STD_OUTPUT_HANDLE = -11;
+        //    [DllImport("Kernel32.dll")]
+        //    //闭嘴函数1
+        //    public extern static bool SetStdHandle(IntPtr nStdHandle, SafeHandleZeroOrMinusOneIsInvalid handle);
+        //    [DllImport("Kernel32.dll")]
+        //    //闭嘴函数2
+        //    public extern static SafePipeHandle GetStdHandle(IntPtr nStdHandle);
+        //}
         /// <summary>
         /// 文件/图片哈希计算
         /// </summary>

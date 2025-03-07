@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.text.json\9.0.2\buildTransitive\net8.0\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\9.0.2\buildTransitive\net8.0\System.Text.Json.targets')" />
-    <Import Project="$(NuGetPackageRoot)questpdf\2025.1.2\buildTransitive\QuestPDF.targets" Condition="Exists('$(NuGetPackageRoot)questpdf\2025.1.2\buildTransitive\QuestPDF.targets')" />
+    <Import Project="$(NuGetPackageRoot)questpdf\2025.1.5\buildTransitive\QuestPDF.targets" Condition="Exists('$(NuGetPackageRoot)questpdf\2025.1.5\buildTransitive\QuestPDF.targets')" />
     <Import Project="$(NuGetPackageRoot)paddle.runtime.win_x64\2.6.1.1\build\Paddle.Runtime.win_x64.targets" Condition="Exists('$(NuGetPackageRoot)paddle.runtime.win_x64\2.6.1.1\build\Paddle.Runtime.win_x64.targets')" />
     <Import Project="$(NuGetPackageRoot)paddleocrsharp\4.4.0.2\build\PaddleOCRSharp.targets" Condition="Exists('$(NuGetPackageRoot)paddleocrsharp\4.4.0.2\build\PaddleOCRSharp.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.ml.onnxruntime.managed\1.20.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.ml.onnxruntime.managed\1.20.1\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />

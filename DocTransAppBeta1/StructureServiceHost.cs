@@ -46,13 +46,13 @@ namespace DocTransAppBeta1
             //var stderr = Console.Error;
             //Console.SetOut(TextWriter.Null);
             //Console.SetError(TextWriter.Null);
-            var defaultHandle = Utility.DllExportCall.GetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE);
+            //var defaultHandle = Utility.DllExportCall.GetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE);
             //2.2 设置输出到匿名管道
-            Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, new AnonymousPipeServerStream(PipeDirection.Out).SafePipeHandle);
+            //Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, new AnonymousPipeServerStream(PipeDirection.Out).SafePipeHandle);
             struct_engine = new PaddleStructureEngine(struct_config, struct_param);
             //Console.SetOut(stdout);
             //Console.SetError(stderr);SetStdHandle(STD_OUTPUT_HANDLE,defaultHandle);
-            Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, defaultHandle);
+            //Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, defaultHandle);
             //Console.SetOut(stdout);
             //Console.SetError(stderr);
         }

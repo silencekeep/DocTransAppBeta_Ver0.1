@@ -41,13 +41,13 @@ namespace DocTransAppBeta1
             //Console.SetOut(TextWriter.Null);
             //Console.SetError(TextWriter.Null);
             //2.1 获取输出句柄
-            var defaultHandle = Utility.DllExportCall.GetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE);
+            //var defaultHandle = Utility.DllExportCall.GetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE);
             //2.2 设置输出到匿名管道
-            Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, new AnonymousPipeServerStream(PipeDirection.Out).SafePipeHandle);
+            //Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, new AnonymousPipeServerStream(PipeDirection.Out).SafePipeHandle);
             ocr_engine = new PaddleOCREngine(ocr_config, ocr_param);
             //Console.SetOut(stdout);
             //Console.SetError(stderr);SetStdHandle(STD_OUTPUT_HANDLE,defaultHandle);
-            Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, defaultHandle);
+            //Utility.DllExportCall.SetStdHandle(Utility.DllExportCall.STD_OUTPUT_HANDLE, defaultHandle);
         }
         public string ImageRecognizeRaw(Image img)
         {

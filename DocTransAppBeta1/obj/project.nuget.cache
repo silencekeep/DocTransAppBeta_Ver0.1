@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "chpD8b4F8tI=",
+  "dgSpecHash": "j7jGHbW9SM8=",
   "success": true,
   "projectFilePath": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\56279\\.nuget\\packages\\paddleocrsharp\\4.4.0.2\\paddleocrsharp.4.4.0.2.nupkg.sha512",
     "C:\\Users\\56279\\.nuget\\packages\\pdfiumviewer\\2.13.0\\pdfiumviewer.2.13.0.nupkg.sha512",
     "C:\\Users\\56279\\.nuget\\packages\\pdfiumviewer.native.x86_64.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86_64.v8-xfa.2018.4.8.256.nupkg.sha512",
-    "C:\\Users\\56279\\.nuget\\packages\\questpdf\\2025.1.2\\questpdf.2025.1.2.nupkg.sha512",
+    "C:\\Users\\56279\\.nuget\\packages\\questpdf\\2025.1.5\\questpdf.2025.1.5.nupkg.sha512",
     "C:\\Users\\56279\\.nuget\\packages\\rtfpipe\\2.0.7677.4303\\rtfpipe.2.0.7677.4303.nupkg.sha512",
     "C:\\Users\\56279\\.nuget\\packages\\system.drawing.common\\8.0.7\\system.drawing.common.8.0.7.nupkg.sha512",
     "C:\\Users\\56279\\.nuget\\packages\\system.io.pipelines\\9.0.2\\system.io.pipelines.9.0.2.nupkg.sha512",

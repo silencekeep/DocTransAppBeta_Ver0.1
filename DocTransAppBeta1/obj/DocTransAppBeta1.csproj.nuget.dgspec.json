@@ -80,7 +80,7 @@
             },
             "QuestPDF": {
               "target": "Package",
-              "version": "[2025.1.2, )"
+              "version": "[2025.1.5, )"
             },
             "RtfPipe": {
               "target": "Package",

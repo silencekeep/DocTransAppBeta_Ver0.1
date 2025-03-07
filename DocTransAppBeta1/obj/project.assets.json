@@ -211,7 +211,7 @@
           "Build/PdfiumViewer.Native.x86_64.v8-xfa.props": {}
         }
       },
-      "QuestPDF/2025.1.2": {
+      "QuestPDF/2025.1.5": {
         "type": "package",
         "compile": {
           "lib/net8.0/QuestPDF.dll": {
@@ -747,10 +747,10 @@
         "pdfiumviewer.native.x86_64.v8-xfa.nuspec"
       ]
     },
-    "QuestPDF/2025.1.2": {
-      "sha512": "Z/MMJw+Dc06dIUqx5CqbLqw6FGqNpVZ2meE2pKdPxEi16ZYo3ZvPlRSvlHoQ52Kh+eaak2lQLNQYeNFeYOTbGQ==",
+    "QuestPDF/2025.1.5": {
+      "sha512": "zQujSsU84WDfndsk7skW4q0BSuaUCY4X1/EZ2vzeAQ5sDbM6V1J+7+MnlL3znVcLLi/SBUy8N2E3JTSLDu9qTQ==",
       "type": "package",
-      "path": "questpdf/2025.1.2",
+      "path": "questpdf/2025.1.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -803,7 +803,7 @@
         "lib/net8.0/QuestPDF.xml",
         "lib/netstandard2.0/QuestPDF.dll",
         "lib/netstandard2.0/QuestPDF.xml",
-        "questpdf.2025.1.2.nupkg.sha512",
+        "questpdf.2025.1.5.nupkg.sha512",
         "questpdf.nuspec",
         "runtimes/linux-arm64/native/libQuestPdfSkia.so",
         "runtimes/linux-arm64/native/libcrypto.so",
@@ -1051,7 +1051,7 @@
       "PaddleOCRSharp >= 4.4.0.2",
       "PdfiumViewer >= 2.13.0",
       "PdfiumViewer.Native.x86_64.v8-xfa >= 2018.4.8.256",
-      "QuestPDF >= 2025.1.2",
+      "QuestPDF >= 2025.1.5",
       "RtfPipe >= 2.0.7677.4303",
       "System.Text.Json >= 9.0.2"
     ]
@@ -1136,7 +1136,7 @@
           },
           "QuestPDF": {
             "target": "Package",
-            "version": "[2025.1.2, )"
+            "version": "[2025.1.5, )"
           },
           "RtfPipe": {
             "target": "Package",
