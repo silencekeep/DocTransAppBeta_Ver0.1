@@ -174,6 +174,7 @@
             openFileDialog_rawPDF.DefaultExt = "pdf";
             openFileDialog_rawPDF.Filter = "可移植文件格式|*.pdf";
             openFileDialog_rawPDF.Title = "选择PDF文件";
+            openFileDialog_rawPDF.FileOk += openFileDialog_rawPDF_FileOk;
             // 
             // labelBoxConfigPanel
             // 

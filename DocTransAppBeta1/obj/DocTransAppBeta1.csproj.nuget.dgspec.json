@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj": {}
+    "D:\\about_computer\\about_cs\\real_git_commit\\DocTransAppBeta_Ver0.1\\DocTransAppBeta1\\DocTransAppBeta1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj": {
+    "D:\\about_computer\\about_cs\\real_git_commit\\DocTransAppBeta_Ver0.1\\DocTransAppBeta1\\DocTransAppBeta1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
+        "projectUniqueName": "D:\\about_computer\\about_cs\\real_git_commit\\DocTransAppBeta_Ver0.1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
         "projectName": "DocTransAppBeta1",
-        "projectPath": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
-        "packagesPath": "C:\\Users\\56279\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\56279\\source\\repos\\DocTransAppBeta1\\DocTransAppBeta1\\obj\\",
+        "projectPath": "D:\\about_computer\\about_cs\\real_git_commit\\DocTransAppBeta_Ver0.1\\DocTransAppBeta1\\DocTransAppBeta1.csproj",
+        "packagesPath": "C:\\Users\\59904\\.nuget\\packages\\",
+        "outputPath": "D:\\about_computer\\about_cs\\real_git_commit\\DocTransAppBeta_Ver0.1\\DocTransAppBeta1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\56279\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\59904\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\about_computer\\about_cs\\DocTransAppBeta_Ver0.1-master": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,10 +62,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-            },
-            "Paddle.Runtime.win_x64": {
-              "target": "Package",
-              "version": "[2.6.1.1, )"
             },
             "PaddleOCRSharp": {
               "target": "Package",

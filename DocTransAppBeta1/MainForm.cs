@@ -426,7 +426,7 @@ namespace DocTransAppBeta1
                 BetaVersionDebugPrinter.WriteLine($"导出第{i}页了", "parser");
             }
             BetaVersionDebugPrinter.WriteLine($"导出结构体完成", "parser");
-            if (false)
+            if (true)
                 //启动翻译（显而易见的逻辑）
                 foreach (var pg in pages)
                 {
@@ -439,10 +439,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -450,10 +450,10 @@ namespace DocTransAppBeta1
                             {
                                 string u = "";
                                 string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                                OllamaApis.DoTextSegmentSync(k, out u);
+                                ChatGPT.DoTextSegmentSync(k, out u);
                                 b2.Text = u;
                                 string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
+                                ChatGPT.TranslateTextSync(u, out v);
                                 b2.TranslatedText = v;
                             }
                             else if (box is DocTransAbandonBox b3)
@@ -461,10 +461,10 @@ namespace DocTransAppBeta1
                                 if (!b3.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b3.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b3.Text, out u);
                                     b3.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b3.TranslatedText = v;
                                 }
                             }
@@ -476,7 +476,7 @@ namespace DocTransAppBeta1
                                 if (!b5.IsRawImage)
                                 {
                                     string u = "";
-                                    OllamaApis.TranslateHTMLSync(b5.Text, out u);
+                                    ChatGPT.TranslateHTMLSync(b5.Text, out u);
                                     b5.TranslatedText = u;
                                 }
                             }
@@ -488,10 +488,10 @@ namespace DocTransAppBeta1
                                 if (!b7.IsRawImage)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b7.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b7.Text, out u);
                                     b7.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b7.TranslatedText = v;
                                 }
                             }
@@ -503,10 +503,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -518,10 +518,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsRawImage)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -536,10 +536,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b1.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -547,10 +547,10 @@ namespace DocTransAppBeta1
                             {
                                 string u = "";
                                 string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                                OllamaApis.DoTextSegmentSync(k, out u);
+                                ChatGPT.DoTextSegmentSync(k, out u);
                                 b2.Text = u;
                                 string v = "";
-                                OllamaApis.TranslateTextSync(u, out v);
+                                ChatGPT.TranslateTextSync(u, out v);
                                 b2.TranslatedText = v;
                             }
                             else if (box is DocTransAbandonBox b3)
@@ -558,10 +558,10 @@ namespace DocTransAppBeta1
                                 if (!b3.IsLogo)
                                 {
                                     string u = "";
-                                    OllamaApis.DoTextSegmentSync(b3.Text, out u);
+                                    ChatGPT.DoTextSegmentSync(b3.Text, out u);
                                     b3.Text = u;
                                     string v = "";
-                                    OllamaApis.TranslateTextSync(u, out v);
+                                    ChatGPT.TranslateTextSync(u, out v);
                                     b3.TranslatedText = v;
                                 }
                             }
@@ -573,7 +573,7 @@ namespace DocTransAppBeta1
                                 if (!b5.IsRawImage)
                                 {
                                     string u = "";
-                                    OllamaApis.TranslateHTMLSync(b5.Text, out u);
+                                    ChatGPT.TranslateHTMLSync(b5.Text, out u);
                                     b5.TranslatedText = u;
                                 }
                                 if (b5.Caption != null)
@@ -581,10 +581,10 @@ namespace DocTransAppBeta1
                                     if (!b5.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        OllamaApis.DoTextSegmentSync(b5.Caption.Text, out u);
+                                        ChatGPT.DoTextSegmentSync(b5.Caption.Text, out u);
                                         b5.Caption.Text = u;
                                         string v = "";
-                                        OllamaApis.TranslateTextSync(u, out v);
+                                        ChatGPT.TranslateTextSync(u, out v);
                                         b5.Caption.TranslatedText = v;
                                     }
                                 }
@@ -596,10 +596,10 @@ namespace DocTransAppBeta1
                                     if (!b6.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        OllamaApis.DoTextSegmentSync(b6.Caption.Text, out u);
+                                        ChatGPT.DoTextSegmentSync(b6.Caption.Text, out u);
                                         b6.Caption.Text = u;
                                         string v = "";
-                                        OllamaApis.TranslateTextSync(u, out v);
+                                        ChatGPT.TranslateTextSync(u, out v);
                                         b6.Caption.TranslatedText = v;
                                     }
                                 }
@@ -611,10 +611,10 @@ namespace DocTransAppBeta1
                                     if (!b7.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        OllamaApis.DoTextSegmentSync(b7.Caption.Text, out u);
+                                        ChatGPT.DoTextSegmentSync(b7.Caption.Text, out u);
                                         b7.Caption.Text = u;
                                         string v = "";
-                                        OllamaApis.TranslateTextSync(u, out v);
+                                        ChatGPT.TranslateTextSync(u, out v);
                                         b7.Caption.TranslatedText = v;
                                     }
                                 }
@@ -759,7 +759,7 @@ namespace DocTransAppBeta1
                                                 //});
                                             }
                                         }
-                                        
+
                                         if (a is DocTransPlainTextBox c)
                                         {
                                             switch (c.InnerAlignMode)
@@ -980,6 +980,11 @@ namespace DocTransAppBeta1
             }
             richTextBox1.Clear();
             richTextBox1.Text = xml2;
+        }
+
+        private void openFileDialog_rawPDF_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }
