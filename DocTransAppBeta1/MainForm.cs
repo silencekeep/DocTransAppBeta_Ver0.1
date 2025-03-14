@@ -16,25 +16,26 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using static DocTransAppBeta1.MainForm;
 using Image = System.Drawing.Image;
 
 namespace DocTransAppBeta1
 {
     /// <summary>
-    /// ºÜ¶àÂß¼­¶¼¶Ñµ½Ò»ÆðµÄ¡°Ö÷´°Ìå¡±
+    /// ï¿½Ü¶ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½Ñµï¿½Ò»ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¡±
     /// </summary>
     public partial class MainForm : Form
     {
-        //ÏîÄ¿Ä¿Â¼
+        //ï¿½ï¿½Ä¿Ä¿Â¼
         public static string? ProgramPathString { get; set; }
         public static List<DocTransPage> ProcPages { get; set; }
-        //±¾µØ±äÁ¿×é
+        //ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½
         PdfiumViewer.PdfDocument? document;
         Image? current_page = null;
         DocLayoutCollection? current_page_layout_collection = null;
         DocImLabelBox? headLabelBox_forFlowLayout = null;
 
-        //¹¹Ôìº¯Êý
+        //ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
         public MainForm()
         {
             InitializeComponent();
@@ -43,21 +44,21 @@ namespace DocTransAppBeta1
             //pv.Size = new System.Drawing.Size(595, 842);
             //this.Controls.Add(pv);
         }
-        //¾²Ì¬¹¹Ôìº¯Êý
+        //ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
         static MainForm() { ProcPages = new(); }
-        //´ò¿ªPDF°´Å¥
+        //ï¿½ï¿½PDFï¿½ï¿½Å¥
         private void button_openRawPDF_Click(object sender, EventArgs e)
         {
-            //´ò¿ª
+            //ï¿½ï¿½
             if (openFileDialog_rawPDF.ShowDialog() == DialogResult.OK)
             {
-                //´ò¿ªOKÁË£¬°ó¶¨TextChangeÊÂ¼þ¶ÁÈ¡PDF£¬ÐèÒª×öÒì³£´¦Àí£¬Èç¹ûÊÇ·Ç·¨PDFÎÄ¼þÔõÃ´°ì£¿
+                //ï¿½ï¿½OKï¿½Ë£ï¿½ï¿½ï¿½TextChangeï¿½Â¼ï¿½ï¿½ï¿½È¡PDFï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·Ç·ï¿½PDFï¿½Ä¼ï¿½ï¿½ï¿½Ã´ï¿½ì£¿
                 textBox_rawPDFPath.Text = openFileDialog_rawPDF.FileName;
                 ProgramPathString = Path.GetDirectoryName(openFileDialog_rawPDF.FileName);
             }
-            //´ò¿ªÖ®Ç°Çå³ýÄ¿Â¼ÏÂµÄ½âÎö½á¹û£¬×îºÃÊÇ¿ÉÒÔ±£´æ½âÎö½á¹û£¬
-            //ÒÔÌáÉýºÜ¶àÒ³ÎÄµµ£¨50Ò³+£©µÄ½âÎöÐ§ÂÊ£¨ÒâË¼¾ÍÊÇ´ÅÅÌ»º´æ£¬¿ÉÒÔÑ¡ÔñÐÔÊµÏÖ£©
-            //±£´æÎªXML£¬Èç¹ûÄ¿Â¼ÏÂÓÐ»º´æÎÄ¼þ£¨cache£©£¬Ôò¶ÁÈ¡£¬Ã»»º´æµÄÒ³¼ÌÐø×ö°æÃæ½âÎö¡£
+            //ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ÂµÄ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½Ò³ï¿½Äµï¿½ï¿½ï¿½50Ò³+ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½Ð§ï¿½Ê£ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½Ç´ï¿½ï¿½Ì»ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö£ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ÎªXMLï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½cacheï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             try
             {
                 Directory.Delete(Path.Combine(ProgramPathString, "images"), true);
@@ -69,7 +70,7 @@ namespace DocTransAppBeta1
             }
             catch { }
         }
-        //¼ÓËÙÊ¶±ðµÄÒì²½·½·¨
+        //ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ì²½ï¿½ï¿½ï¿½ï¿½
         private void __ocr(int index, Image img)
         {
             //DocImPlayer player = new DocImPlayer();
@@ -86,15 +87,15 @@ namespace DocTransAppBeta1
             //player.Collection = null;
 
             //PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(player, collection));
-            //BetaVersionDebugPrinter.WriteLine($"µÚ{index + 1}Ò³´¦ÀíÍê¡£", "Loader");
+            //BetaVersionDebugPrinter.WriteLine($"ï¿½ï¿½{index + 1}Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ê¡£", "Loader");
         }
-        //´ò¿ªPDFµÄÂß¼­
+        //ï¿½ï¿½PDFï¿½ï¿½ï¿½ß¼ï¿½
         private void textBox_rawPDFPath_TextChanged(object sender, EventArgs e)
         {
             using (DocLayoutAnalyzer analyzer = new DocLayoutAnalyzer())
             {
                 PageCache.Clear();
-                //´Ë´¦´¦ÀíÎÄ¼þ´ò¿ªÂß¼­
+                //ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ß¼ï¿½
                 document = PdfDocument.Load(textBox_rawPDFPath.Text);
                 int pageCount = document.PageCount;
                 //int dpi = 300;//2550*3300 dpi300
@@ -108,8 +109,8 @@ namespace DocTransAppBeta1
                     DisplayMember = "__g",
                 };
 
-                //ÍÆÀíÂß¼­£¬´æÔÚÍ¼ÏñÔÚÊäÈëÍÆÀíÆ÷DocLayoutAnalyzerÊ±µÄÏñËØÆ«ÒÆºÍ±ÈÀý±ä»¯
-                //Ê¹ÓÃÒýÓÃ´«µÝºÍ»ñÈ¡¶à²ÎÊý¡£
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DocLayoutAnalyzerÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ÆºÍ±ï¿½ï¿½ï¿½ï¿½ä»¯
+                //Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ÝºÍ»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 float ratiox = 0.0f;
                 int offsetx = 0;
                 var input_tensorx = DocLayoutAnalyzer.ConvertImageToTensor(current_page, out ratiox, out offsetx);
@@ -124,15 +125,15 @@ namespace DocTransAppBeta1
                     Dock = DockStyle.Fill,
                     DisplayMember = "__g",
                 };
-                //½¨ÒéÖØÐ´PDF¼ÓÔØ²ßÂÔ¡£²åÈë»º´æµÄÓ¦ÓÃ£¬»º´æ´æÈëÄ¿Â¼ÏÂcacheÎÄ¼þ¼Ð¡£
-                //·ÖÀëRender£¨äÖÈ¾£©£¬Inference£¨°æÃæ½âÎöµÄÍÆÀí£©£¬cache£¨»º´æ£©ºÍÍ¬²½µ½UI
-                //·Ö²½½øÐÐ¡£
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´PDFï¿½ï¿½ï¿½Ø²ï¿½ï¿½Ô¡ï¿½ï¿½ï¿½ï¿½ë»ºï¿½ï¿½ï¿½Ó¦ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½cacheï¿½Ä¼ï¿½ï¿½Ð¡ï¿½
+                //ï¿½ï¿½ï¿½ï¿½Renderï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½Inferenceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cacheï¿½ï¿½ï¿½ï¿½ï¿½æ£©ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½UI
+                //ï¿½Ö²ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
                 docImPlayer.Collection = collectionx;
                 docImPlayer.Collection = null;
                 PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(docImPlayer, collectionx));
-                BetaVersionDebugPrinter.WriteLine($"µÚ{1}Ò³´¦ÀíÍê¡£", "Loader");
+                BetaVersionDebugPrinter.WriteLine($"ï¿½ï¿½{1}Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ê¡£", "Loader");
 
-                //Ê¹ÓÃÒì²½µÈ´ý·½·¨¼ÓËÙÊ¶±ð
+                //Ê¹ï¿½ï¿½ï¿½ì²½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½
                 //ThreadPool.SetMaxThreads(3, 3);
                 //List<Task> ocrtaskList = new List<Task>();
                 for (int i = 1; i < pageCount; i++)
@@ -145,25 +146,25 @@ namespace DocTransAppBeta1
                     player.Dock = DockStyle.Fill;
                     float ratio = 0.0f;
                     int offset = 0;
-                    //Image×ªÊäÈëÕÅÁ¿
+                    //Image×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     var input_tensor = DocLayoutAnalyzer.ConvertImageToTensor(img, out ratio, out offset);
-                    //ÍÆÀí
+                    //ï¿½ï¿½ï¿½ï¿½
                     var inference_result = analyzer.Inference(input_tensor);
-                    //Ïû³ýÊä³öÕÅÁ¿ÖÐµÄÆ«ÒÆÓ°Ïì
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Æ«ï¿½ï¿½Ó°ï¿½ï¿½
                     DocLayoutAnalyzer.OutputFittingWithRatio(ref inference_result, ratio, offset);
-                    //»ñµÃ¿É¶ÁµÄÍÆÀí½á¹û¼¯ºÏ
+                    //ï¿½ï¿½Ã¿É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
                     //current_page_layout_collection = collection;
                     player.Image = img;
                     player.Collection = collection;
                     player.Collection = null;
-                    //°ÑÒ³µÄPlayerºÍ´¦ÀíÍêµÄCollectionÈû½øÒ³»º´æ
+                    //ï¿½ï¿½Ò³ï¿½ï¿½Playerï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Collectionï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
                     PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(player, collection));
-                    BetaVersionDebugPrinter.WriteLine($"µÚ{i + 1}Ò³´¦ÀíÍê¡£", "Loader");
+                    BetaVersionDebugPrinter.WriteLine($"ï¿½ï¿½{i + 1}Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ê¡£", "Loader");
                 }
                 //Task.WaitAll(ocrtaskList.ToArray());
 
-                //³õÊ¼»¯Ò»Ð©UI¿Ø¼þ
+                //ï¿½ï¿½Ê¼ï¿½ï¿½Ò»Ð©UIï¿½Ø¼ï¿½
                 label_maxPageCount.Text = "/" + pageCount;
                 numericUpDown_pageSelector.Value = 1;
                 numericUpDown_pageSelector.Minimum = 1;
@@ -181,10 +182,10 @@ namespace DocTransAppBeta1
                 //var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
                 //current_page_layout_collection = collection;
             }
-            //Ç¿ÖÆ»ØÊÕÀ¬»ø
+            //Ç¿ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             System.GC.Collect();
         }
-        //ÏÂÃæµÄÐÞ¸ÄÄ£Ê½Îª²é¿´Ä£Ê½£¬Ã»¿ò£¨Òþ²Ø£©
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Ä£Ê½Îªï¿½é¿´Ä£Ê½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½
         private void radioButton_lookingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && radioButton_lookingMode.Checked)
@@ -196,7 +197,7 @@ namespace DocTransAppBeta1
             }
 
         }
-        //Ô¤ÀÀÄ£Ê½£¬»æÖÆCollectionµ½Image
+        //Ô¤ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Collectionï¿½ï¿½Image
         private void radioButton_viewingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && current_page_layout_collection != null && radioButton_viewingMode.Checked)
@@ -209,7 +210,7 @@ namespace DocTransAppBeta1
                 comboBox1.SelectedIndex = 10;
             }
         }
-        //±à¼­Ä£Ê½£¬×îÖØÒªµÄ£¬µ÷Õû°æÃæ
+        //ï¿½à¼­Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void radioButton_editingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && current_page_layout_collection != null && radioButton_editingMode.Checked)
@@ -220,7 +221,7 @@ namespace DocTransAppBeta1
                 docImPlayer.Image = current_page;
             }
         }
-        //ÆúÓÃ
+        //ï¿½ï¿½ï¿½ï¿½
         [Obsolete]
         public List<DocImLabelBox> FetchListBox()
         {
@@ -232,7 +233,7 @@ namespace DocTransAppBeta1
             }
             return lbx;
         }
-        //Ã»É¶ÓÃ
+        //Ã»É¶ï¿½ï¿½
         private void MainForm_Load(object sender, EventArgs e)
         {
             listBox1.DisplayMember = "__g";
@@ -242,9 +243,9 @@ namespace DocTransAppBeta1
             //PaddleOCR.PaddleOCR.Initialize();
             //PaddleOCR.PaddleOCR.Recognize();
         }
-        //Ò³»º´æ
+        //Ò³ï¿½ï¿½ï¿½ï¿½
         public List<KeyValuePair<DocImPlayer, DocLayoutCollection>> PageCache = new List<KeyValuePair<DocImPlayer, DocLayoutCollection>>();
-        //ÇÐ»»Ò³£¬´ÓÒ³»º´æPageCache¶ÁÈ¡´¦ÀíºÃµÄ½á¹û
+        //ï¿½Ð»ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½PageCacheï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ½ï¿½ï¿½
         private void numericUpDown_pageSelector_ValueChanged(object sender, EventArgs e)
         {
             if (document != null)
@@ -258,7 +259,7 @@ namespace DocTransAppBeta1
                 //DocLayoutAnalyzer.OutputFittingWithRatio(ref inference_result, ratio, offset);
                 //var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
 
-                //¾ÍÊÇÇÐ»»UIÖÐ¶ÔÓ¦µÄ¿Ø¼þ
+                //ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½UIï¿½Ð¶ï¿½Ó¦ï¿½Ä¿Ø¼ï¿½
                 panel1.Controls.Clear();
                 panel2.Controls.Clear();
                 var pg = PageCache[(int)(numericUpDown_pageSelector.Value - 1)];
@@ -271,7 +272,7 @@ namespace DocTransAppBeta1
                 panel1.Controls.Add(docImPlayer);
                 panel2.Controls.Add(docImPlayer.listBox);
             }
-            //ÇÐ»»µ¥Ñ¡¿òÏÔÊ¾Ä£Ê½µÄÐø¼¯
+            //ï¿½Ð»ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ê¾Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (current_page != null && current_page_layout_collection != null && radioButton_editingMode.Checked)
             {
                 //var image = DocLayoutAnalyzer.DrawBoundingBoxesOnImage(current_page, current_page_layout_collection);
@@ -301,7 +302,7 @@ namespace DocTransAppBeta1
                 radioButton_setPageAsFixed.Checked = true;
             else radioButton_setPageAsFlowLayouted.Checked = true;
         }
-        //Í¨ÖªÖ÷´°ÌåÑ¡ÖÐ¿ò£¬£¨¿É¿çÒ³±£Áô£©
+        //Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð¿ò£¬£ï¿½ï¿½É¿ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         //internal void NotifySelectedLabelBox(DocImLabelBox labelBox)
         //{
         //    //GetContainer().NotifySelectLabelBox();
@@ -327,10 +328,10 @@ namespace DocTransAppBeta1
         //    //throw new NotImplementedException();
         //    return selectedLabelBox;
         //}
-        //¿´Á´±í
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void button_msgBoxShowLinkNode_Click(object sender, EventArgs e)
         {
-            //Èç¹ûÉáÆúÁ´±íµÄ»°£¬Õâ¸öÒ²Ò»µã¦ÂÓÃÃ»ÓÐ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½
             StringBuilder sb = new StringBuilder();
             DocImLabelBox? curr = docImPlayer.HeadLabelBox;
             while (curr != null)
@@ -351,34 +352,34 @@ namespace DocTransAppBeta1
             //DocImLabelBox? headLabelBox_forFlowLayout = null;
             numericUpDown_pageSelector.Value = 1;
         }
-        //°ÑÄ¿Ç°ÏÔÊ¾µÄÒ³±£´æÏÂÀ´
+        //ï¿½ï¿½Ä¿Ç°ï¿½ï¿½Ê¾ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         private void button_saveImageFrame_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Title = "±£´æ±ê¼ÇÒ³";
+            saveFileDialog.Title = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && current_page != null && current_page_layout_collection != null)
                 DocLayoutAnalyzer.
                     DrawBoundingBoxesOnImage(current_page, current_page_layout_collection)
                     .Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
         }
         //public bool IsFixedPage { get; set; }
-        //ÉèÖÃÎª¹Ì¶¨Ò³
+        //ï¿½ï¿½ï¿½ï¿½Îªï¿½Ì¶ï¿½Ò³
         private void radioButton_setPageAsFixed_CheckedChanged(object sender, EventArgs e)
         {
             docImPlayer.IsFixedPage = true;
         }
-        //ÉèÖÃÎª×Ô¶¯Ò³
+        //ï¿½ï¿½ï¿½ï¿½Îªï¿½Ô¶ï¿½Ò³
         private void radioButton_setPageAsFlowLayouted_CheckedChanged(object sender, EventArgs e)
         {
             docImPlayer.IsFixedPage = false;
         }
-        //¼ÓÔØ¶ÔÓ¦panelµ½
+        //ï¿½ï¿½ï¿½Ø¶ï¿½Ó¦panelï¿½ï¿½
         internal void LoadPanel(ConfigPanel panel)
         {
             //throw new NotImplementedException();
             labelBoxConfigPanel.Controls.Clear();
             labelBoxConfigPanel.Controls.Add((UserControl)panel);
         }
-        //Í¨ÖªÑ¡ÖÐÁËÄ³Box£¬¸üÐÂUI
+        //Í¨ÖªÑ¡ï¿½ï¿½ï¿½ï¿½Ä³Boxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UI
         internal void NotifiedByDocImPlayerForEventOccurred()
         {
             var label = docImPlayer.SelectedLabelBox;
@@ -392,12 +393,60 @@ namespace DocTransAppBeta1
             docImPlayer.Invalidate();
         }
         /// <summary>
-        /// ºÜÖØÒªµÄº¯Êý¡ª¡ªÒ³Ãæ½âÎö
-        /// ¹¦ÄÜ²»¸´ÔÓ£¬¾ÍÊÇ†ªàÂ£¬ÒªÕë¶Ô¸÷ÖÖÀàÐÍÐ´²î²»¶àÒ»ÑùµÄ·½·¨£¬
-        /// Ä¿Ç°Ã»ÕÒµ½½µµÍÐÐÊýµÄ·½·¨sorry
+        /// ï¿½ï¿½ï¿½ï¿½Òªï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// ï¿½ï¿½ï¿½Ü²ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½Ç†ï¿½ï¿½Â£ï¿½Òªï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½î²»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½
+        /// Ä¿Ç°Ã»ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½sorry
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
+        public interface LanguageModel
+        {
+            void DoTextSegment(string input, out string output);
+            void TranslateText(string input, out string output);
+            void TranslateHTML(string html, out string output);
+        }
+
+        public class ChatGPTAdapter : LanguageModel
+        {
+            public void DoTextSegment(string input, out string output)
+                => ChatGPT.DoTextSegmentSync(input, out output);
+
+            public void TranslateText(string input, out string output)
+                => ChatGPT.TranslateTextSync(input, out output);
+
+            public void TranslateHTML(string html, out string output)
+                => ChatGPT.TranslateHTMLSync(html, out output);
+        }
+
+        public class OllamaAdapter : LanguageModel
+        {
+            public void DoTextSegment(string input, out string output)
+                => OllamaApis.DoTextSegmentSync(input, out output);
+
+            public void TranslateText(string input, out string output)
+                => OllamaApis.TranslateTextSync(input, out output);
+
+            public void TranslateHTML(string html, out string output)
+                => OllamaApis.TranslateHTMLSync(html, out output);
+        }
+
+        public static class Translator
+        {
+            private static LanguageModel _current = new ChatGPTAdapter(); // Ä¬ï¿½ï¿½
+
+            public static void UseModel<T>() where T : LanguageModel, new()
+                => _current = new T();
+
+            public static void DoTextSegment(string input, out string output)
+                => _current.DoTextSegment(input, out output);
+
+            public static void TranslateText(string input, out string output)
+                => _current.TranslateText(input, out output);
+
+            public static void TranslateHTML(string html, out string output)
+                => _current.TranslateHTML(html, out output);
+        }
         private void button_previewThisNext_Click(object sender, EventArgs e)
         {
             //try
@@ -407,7 +456,7 @@ namespace DocTransAppBeta1
             //}
             //catch
             //{
-            //    BetaVersionDebugPrinter.WriteLine("·¢Éú´íÎó£¬¿ÉÄÜÊÇÃ»Next»òÕßSelect", "_markAsHead");
+            //    BetaVersionDebugPrinter.WriteLine("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬¿ï¿½ï¿½ï¿½ï¿½ï¿½Ã»Nextï¿½ï¿½ï¿½ï¿½Select", "_markAsHead");
             //}
             DocTransDocument document = new DocTransDocument();
             List<DocTransPage> pages = new List<DocTransPage>();
@@ -417,17 +466,17 @@ namespace DocTransAppBeta1
                 var uts = kvp.Key;
                 if (uts.HeadLabelBox == null && !uts.IsFixedPage)
                 {
-                    //MessageBox.Show($"¾¯¸æ{i + 1}Ò³Ã»ÓÐÒ³Í·¡£");
+                    //MessageBox.Show($"ï¿½ï¿½ï¿½ï¿½{i + 1}Ò³Ã»ï¿½ï¿½Ò³Í·ï¿½ï¿½");
                     //return;
                 }
                 var page = uts.CurrentPage;
 
                 pages.Add(page);
-                BetaVersionDebugPrinter.WriteLine($"µ¼³öµÚ{i}Ò³ÁË", "parser");
+                BetaVersionDebugPrinter.WriteLine($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{i}Ò³ï¿½ï¿½", "parser");
             }
-            BetaVersionDebugPrinter.WriteLine($"µ¼³ö½á¹¹ÌåÍê³É", "parser");
+            BetaVersionDebugPrinter.WriteLine($"ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½", "parser");
             if (true)
-                //Æô¶¯·­Òë£¨ÏÔ¶øÒ×¼ûµÄÂß¼­£©
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¨ï¿½Ô¶ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½
                 foreach (var pg in pages)
                 {
                     if (pg.IsFixedPage)
@@ -439,10 +488,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
+                                    Translator.DoTextSegment(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -450,10 +499,10 @@ namespace DocTransAppBeta1
                             {
                                 string u = "";
                                 string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                                ChatGPT.DoTextSegmentSync(k, out u);
+                                Translator.DoTextSegment(k, out u);
                                 b2.Text = u;
                                 string v = "";
-                                ChatGPT.TranslateTextSync(u, out v);
+                                Translator.TranslateText(u, out v);
                                 b2.TranslatedText = v;
                             }
                             else if (box is DocTransAbandonBox b3)
@@ -461,10 +510,10 @@ namespace DocTransAppBeta1
                                 if (!b3.IsLogo)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b3.Text, out u);
+                                    Translator.DoTextSegment(b3.Text, out u);
                                     b3.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b3.TranslatedText = v;
                                 }
                             }
@@ -476,7 +525,7 @@ namespace DocTransAppBeta1
                                 if (!b5.IsRawImage)
                                 {
                                     string u = "";
-                                    ChatGPT.TranslateHTMLSync(b5.Text, out u);
+                                    Translator.TranslateHTML(b5.Text, out u);
                                     b5.TranslatedText = u;
                                 }
                             }
@@ -488,10 +537,10 @@ namespace DocTransAppBeta1
                                 if (!b7.IsRawImage)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b7.Text, out u);
+                                    Translator.DoTextSegment(b7.Text, out u);
                                     b7.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b7.TranslatedText = v;
                                 }
                             }
@@ -503,10 +552,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
+                                    Translator.DoTextSegment(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -518,10 +567,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsRawImage)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
+                                    Translator.DoTextSegment(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -536,10 +585,10 @@ namespace DocTransAppBeta1
                                 if (!b1.IsLogo)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b1.Text, out u);
+                                    Translator.DoTextSegment(b1.Text, out u);
                                     b1.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b1.TranslatedText = v;
                                 }
                             }
@@ -547,10 +596,10 @@ namespace DocTransAppBeta1
                             {
                                 string u = "";
                                 string k = (b2.AutoIndentation ? "\t" : "") + b2.Text;
-                                ChatGPT.DoTextSegmentSync(k, out u);
+                                Translator.DoTextSegment(k, out u);
                                 b2.Text = u;
                                 string v = "";
-                                ChatGPT.TranslateTextSync(u, out v);
+                                Translator.TranslateText(u, out v);
                                 b2.TranslatedText = v;
                             }
                             else if (box is DocTransAbandonBox b3)
@@ -558,10 +607,10 @@ namespace DocTransAppBeta1
                                 if (!b3.IsLogo)
                                 {
                                     string u = "";
-                                    ChatGPT.DoTextSegmentSync(b3.Text, out u);
+                                    Translator.DoTextSegment(b3.Text, out u);
                                     b3.Text = u;
                                     string v = "";
-                                    ChatGPT.TranslateTextSync(u, out v);
+                                    Translator.TranslateText(u, out v);
                                     b3.TranslatedText = v;
                                 }
                             }
@@ -573,7 +622,7 @@ namespace DocTransAppBeta1
                                 if (!b5.IsRawImage)
                                 {
                                     string u = "";
-                                    ChatGPT.TranslateHTMLSync(b5.Text, out u);
+                                    Translator.TranslateHTML(b5.Text, out u);
                                     b5.TranslatedText = u;
                                 }
                                 if (b5.Caption != null)
@@ -581,10 +630,10 @@ namespace DocTransAppBeta1
                                     if (!b5.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        ChatGPT.DoTextSegmentSync(b5.Caption.Text, out u);
+                                        Translator.DoTextSegment(b5.Caption.Text, out u);
                                         b5.Caption.Text = u;
                                         string v = "";
-                                        ChatGPT.TranslateTextSync(u, out v);
+                                        Translator.TranslateText(u, out v);
                                         b5.Caption.TranslatedText = v;
                                     }
                                 }
@@ -596,10 +645,10 @@ namespace DocTransAppBeta1
                                     if (!b6.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        ChatGPT.DoTextSegmentSync(b6.Caption.Text, out u);
+                                        Translator.DoTextSegment(b6.Caption.Text, out u);
                                         b6.Caption.Text = u;
                                         string v = "";
-                                        ChatGPT.TranslateTextSync(u, out v);
+                                        Translator.TranslateText(u, out v);
                                         b6.Caption.TranslatedText = v;
                                     }
                                 }
@@ -611,10 +660,10 @@ namespace DocTransAppBeta1
                                     if (!b7.Caption.IsRawImage)
                                     {
                                         string u = "";
-                                        ChatGPT.DoTextSegmentSync(b7.Caption.Text, out u);
+                                        Translator.DoTextSegment(b7.Caption.Text, out u);
                                         b7.Caption.Text = u;
                                         string v = "";
-                                        ChatGPT.TranslateTextSync(u, out v);
+                                        Translator.TranslateText(u, out v);
                                         b7.Caption.TranslatedText = v;
                                     }
                                 }
@@ -623,24 +672,24 @@ namespace DocTransAppBeta1
                         }
                     }
 
-                    BetaVersionDebugPrinter.WriteLine("Íê³ÉÒ»Ò³ÁË", "parser");
+                    BetaVersionDebugPrinter.WriteLine("ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½", "parser");
                     //pg
                 }
             MainForm.ProcPages = pages;
-            //¶ÔËùÓÐÒýÓÃÖ´ÐÐ·­Òë£¨Èç¹û¿É·­Òë£©
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð·ï¿½ï¿½ë£¨ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ë£©
 
         }
 
         private void button_AutoRelation_Click(object sender, EventArgs e)
         {
-            //listboxÑ¡ÖÐÏîÉ¾³ý
+            //listboxÑ¡ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
             try
             {
                 listBox1.Items.Remove(listBox1.SelectedItem);
             }
             catch
             {
-                BetaVersionDebugPrinter.WriteLine("É¾³ýÊ§°ÜÁË", "DellistBox1");
+                BetaVersionDebugPrinter.WriteLine("É¾ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½", "DellistBox1");
             }
 
         }
@@ -650,9 +699,9 @@ namespace DocTransAppBeta1
             docImPlayer.IsContentsPage = checkBox1.Checked;
         }
         /// <summary>
-        /// ÕâÀïºÜÖØÒª£¬Õû¸öÒ»º¯ÊýÊÇÒ³Ãæ½âÎöÆ÷µÄÖ§³Ö
-        /// QuestPDF¿âµÄÎÄµµÐ´µÄºÜÇå³þºÜÇå³þ£¬C#
-        /// ÕâÃ´¶àPDF¹¹¼þ¿âÀïÃæ×îºÃÓÃ¹¦ÄÜ×îÈ«µÄ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½
+        /// QuestPDFï¿½ï¿½ï¿½ï¿½Äµï¿½Ð´ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½C#
+        /// ï¿½ï¿½Ã´ï¿½ï¿½PDFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -660,7 +709,7 @@ namespace DocTransAppBeta1
         {
             if (MainForm.ProcPages.Count == 0)
             {
-                MessageBox.Show("Ã»ÓÐ½âÎö¶ÔÏóÁÐ±í¡£", "´íÎó", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ã»ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -683,15 +732,15 @@ namespace DocTransAppBeta1
                         //page.PageColor(Colors.White);
                         //page.DefaultTextStyle(x => x.FontSize(20));
                         //page.Header.
-                        ////page.Header().Text("QuestPDF²âÊÔ").SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
+                        ////page.Header().Text("QuestPDFï¿½ï¿½ï¿½ï¿½").SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
                         //page.Content().PaddingVertical(1, Unit.Centimetre).Column(x => {
                         //    x.Spacing(20);
-                        //    x.Item().Text("ÕâÊÇÒ³Ã¼ÄÚÈÝ");
+                        //    x.Item().Text("ï¿½ï¿½ï¿½ï¿½Ò³Ã¼ï¿½ï¿½ï¿½ï¿½");
                         //    //x.Item().Image("path/to/image.jpg", ImageScaling.Resize);
                         //});
-                        //page.Footer().AlignCenter().Text(x => x.Span("Ò³Âë "));
-                        // Ê¹ÓÃCanvas½øÐÐ¾ø¶Ô¶¨Î»
-                        // ×Ô¶¯²¼¾ÖµÄÎÄ±¾ÄÚÈÝ
+                        //page.Footer().AlignCenter().Text(x => x.Span("Ò³ï¿½ï¿½ "));
+                        // Ê¹ï¿½ï¿½Canvasï¿½ï¿½ï¿½Ð¾ï¿½ï¿½Ô¶ï¿½Î»
+                        // ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½
                         //page.Content().Box();
                         /*page.Content().Row(row =>
                         {
@@ -702,7 +751,7 @@ namespace DocTransAppBeta1
                         {
                             //column.RelativeItem()
 
-                            column.Spacing(10); // ÉèÖÃ¶ÎÂäÖ®¼äµÄ¼ä¾à10
+                            column.Spacing(10); // ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Ö®ï¿½ï¿½Ä¼ï¿½ï¿½10
                             for (int i = 0; i < MainForm.ProcPages.Count; i++)
                             {
                                 var pg = MainForm.ProcPages[i];
@@ -835,7 +884,7 @@ namespace DocTransAppBeta1
                                 }
                                 else if (pg.IsContentsPage)
                                 {
-                                    //´¦ÖÃÄ¿Â¼Ò³µÄÂß¼­
+                                    //ï¿½ï¿½ï¿½ï¿½Ä¿Â¼Ò³ï¿½ï¿½ï¿½ß¼ï¿½
                                 }
                                 else
                                 {
@@ -849,7 +898,7 @@ namespace DocTransAppBeta1
                             {
                                 // control number of columns, default is 2
                                 multiColumn.Columns(2);
-                                // ³¬¼¶ÖØÒª·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡
+                                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                                 multiColumn.BalanceHeight(true);
                                 // control space between columns, default is 0
                                 multiColumn.Spacing(25);
@@ -873,7 +922,7 @@ namespace DocTransAppBeta1
                             });
                             column.Item().PageBreak();*/
 
-                            //Unconstrained ·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡·Ç³£ÖØÒª£¡£¡£¡
+                            //Unconstrained ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                             //column.Item().Unconstrained().TranslateX(374 - 50).TranslateY(39 - 50).Width(186).Height(76)
                             //    .Image("C:\\Users\\56279\\Desktop\\Title_Intel.png");
 
@@ -902,28 +951,28 @@ namespace DocTransAppBeta1
                     });
                     //container.Column(col => xxxxx
                     //{
-                    //    // µ¥ÁÐÇøÓò
-                    //    col.Item().Text("µ¥ÁÐ±êÌâ").FontSize(16);
+                    //    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    //    col.Item().Text("ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½").FontSize(16);
                     //    col.Item().Text(Placeholders.LoremIpsum());
 
-                    //    // Ë«ÁÐÇ¶Ì×
+                    //    // Ë«ï¿½ï¿½Ç¶ï¿½ï¿½
                     //    col.Item().Row(row =>
                     //    {
                     //        row.RelativeItem().Column(subCol =>
                     //        {
-                    //            subCol.Item().Text("×óÀ¸ÄÚÈÝ");
+                    //            subCol.Item().Text("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     //            subCol.Item().Image(Placeholders.Image(200, 100));
                     //        });
 
                     //        row.RelativeItem().Column(subCol =>
                     //        {
-                    //            subCol.Item().Text("ÓÒÀ¸ÄÚÈÝ");
+                    //            subCol.Item().Text("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     //            subCol.Item().Image(Placeholders.Image(200, 100));
                     //        });
                     //    });
 
-                    //    // ¼ÌÐøµ¥ÁÐÄÚÈÝ
-                    //    col.Item().Text("ºóÐøÄÚÈÝ").FontColor(Colors.Red);
+                    //    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    //    col.Item().Text("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½").FontColor(Colors.Red);
                     //});
                 }).GeneratePdfAndShow(); //("C:\\Users\\56279\\Desktop\\Output2.pdf");////
             }
@@ -932,10 +981,10 @@ namespace DocTransAppBeta1
                 MessageBox.Show(ex.Message);
             }
         }
-        //ÏÂÃæ¶¼ÊÇ¸»ÎÄ±¾ÐÞ¸ÄÆ÷µÄ´°Ìåµ÷ÓÃ´úÂë
+        //ï¿½ï¿½ï¿½æ¶¼ï¿½Ç¸ï¿½ï¿½Ä±ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½
         private void button1_Click(object sender, EventArgs e)
         {
-            //listboxÇå¿Õ
+            //listboxï¿½ï¿½ï¿½
             listBox1.Items.Clear();
         }
 
@@ -950,16 +999,16 @@ namespace DocTransAppBeta1
         {
             if (MainForm.ProcPages == null)
             {
-                MessageBox.Show("»¹Ã»´¦Àí¹ý°É£¿");
+                MessageBox.Show("ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½");
                 return;
             }
             PagesEditor pe = new PagesEditor(MainForm.ProcPages);
             pe.ShowDialog();
         }
-        //±£´æXML
+        //ï¿½ï¿½ï¿½ï¿½XML
         private void button3_Click(object sender, EventArgs e)
         {
-            //Xml½âÎö~
+            //Xmlï¿½ï¿½ï¿½ï¿½~
             DocTransObjSerializer serial = new DocTransObjSerializer();
             string xml2 = "";
             var pages = MainForm.ProcPages;

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DocTransAppBeta1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+789ca227891e2a171e3414fb34a27bae043ba75b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e8e4734e0dec4cccdbe39d54b442c6a35649c36")]
 [assembly: System.Reflection.AssemblyProductAttribute("DocTransAppBeta1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DocTransAppBeta1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
