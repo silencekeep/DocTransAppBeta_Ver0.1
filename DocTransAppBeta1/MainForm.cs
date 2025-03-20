@@ -22,20 +22,20 @@ using Image = System.Drawing.Image;
 namespace DocTransAppBeta1
 {
     /// <summary>
-    /// �ܶ��߼����ѵ�һ��ġ������塱
+    /// 很多逻辑都堆到一起的“主窗体”
     /// </summary>
     public partial class MainForm : Form
     {
-        //��ĿĿ¼
+        //项目目录
         public static string? ProgramPathString { get; set; }
         public static List<DocTransPage> ProcPages { get; set; }
-        //���ر�����
+        //本地变量组
         PdfiumViewer.PdfDocument? document;
         Image? current_page = null;
         DocLayoutCollection? current_page_layout_collection = null;
         DocImLabelBox? headLabelBox_forFlowLayout = null;
 
-        //���캯��
+        //构造函数
         public MainForm()
         {
             InitializeComponent();
@@ -44,21 +44,21 @@ namespace DocTransAppBeta1
             //pv.Size = new System.Drawing.Size(595, 842);
             //this.Controls.Add(pv);
         }
-        //��̬���캯��
+        //静态构造函数
         static MainForm() { ProcPages = new(); }
-        //��PDF��ť
+        //打开PDF按钮
         private void button_openRawPDF_Click(object sender, EventArgs e)
         {
-            //��
+            //打开
             if (openFileDialog_rawPDF.ShowDialog() == DialogResult.OK)
             {
-                //��OK�ˣ���TextChange�¼���ȡPDF����Ҫ���쳣����������ǷǷ�PDF�ļ���ô�죿
+                //打开OK了，绑定TextChange事件读取PDF，需要做异常处理，如果是非法PDF文件怎么办？
                 textBox_rawPDFPath.Text = openFileDialog_rawPDF.FileName;
                 ProgramPathString = Path.GetDirectoryName(openFileDialog_rawPDF.FileName);
             }
-            //��֮ǰ���Ŀ¼�µĽ������������ǿ��Ա�����������
-            //�������ܶ�ҳ�ĵ���50ҳ+���Ľ���Ч�ʣ���˼���Ǵ��̻��棬����ѡ����ʵ�֣�
-            //����ΪXML�����Ŀ¼���л����ļ���cache�������ȡ��û�����ҳ���������������
+            //打开之前清除目录下的解析结果，最好是可以保存解析结果，
+            //以提升很多页文档（50页+）的解析效率（意思就是磁盘缓存，可以选择性实现）
+            //保存为XML，如果目录下有缓存文件（cache），则读取，没缓存的页继续做版面解析。
             try
             {
                 Directory.Delete(Path.Combine(ProgramPathString, "images"), true);
@@ -70,7 +70,7 @@ namespace DocTransAppBeta1
             }
             catch { }
         }
-        //����ʶ����첽����
+        //加速识别的异步方法
         private void __ocr(int index, Image img)
         {
             //DocImPlayer player = new DocImPlayer();
@@ -87,15 +87,15 @@ namespace DocTransAppBeta1
             //player.Collection = null;
 
             //PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(player, collection));
-            //BetaVersionDebugPrinter.WriteLine($"��{index + 1}ҳ�����ꡣ", "Loader");
+            //BetaVersionDebugPrinter.WriteLine($"第{index + 1}页处理完。", "Loader");
         }
-        //��PDF���߼�
+        //打开PDF的逻辑
         private void textBox_rawPDFPath_TextChanged(object sender, EventArgs e)
         {
             using (DocLayoutAnalyzer analyzer = new DocLayoutAnalyzer())
             {
                 PageCache.Clear();
-                //�˴������ļ����߼�
+                //此处处理文件打开逻辑
                 document = PdfDocument.Load(textBox_rawPDFPath.Text);
                 int pageCount = document.PageCount;
                 //int dpi = 300;//2550*3300 dpi300
@@ -109,8 +109,8 @@ namespace DocTransAppBeta1
                     DisplayMember = "__g",
                 };
 
-                //�����߼�������ͼ��������������DocLayoutAnalyzerʱ������ƫ�ƺͱ����仯
-                //ʹ�����ô��ݺͻ�ȡ�������
+                //推理逻辑，存在图像在输入推理器DocLayoutAnalyzer时的像素偏移和比例变化
+                //使用引用传递和获取多参数。
                 float ratiox = 0.0f;
                 int offsetx = 0;
                 var input_tensorx = DocLayoutAnalyzer.ConvertImageToTensor(current_page, out ratiox, out offsetx);
@@ -125,15 +125,15 @@ namespace DocTransAppBeta1
                     Dock = DockStyle.Fill,
                     DisplayMember = "__g",
                 };
-                //������дPDF���ز��ԡ����뻺���Ӧ�ã��������Ŀ¼��cache�ļ��С�
-                //����Render����Ⱦ����Inference�������������������cache�����棩��ͬ����UI
-                //�ֲ����С�
+                //建议重写PDF加载策略。插入缓存的应用，缓存存入目录下cache文件夹。
+                //分离Render（渲染），Inference（版面解析的推理），cache（缓存）和同步到UI
+                //分步进行。
                 docImPlayer.Collection = collectionx;
                 docImPlayer.Collection = null;
                 PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(docImPlayer, collectionx));
-                BetaVersionDebugPrinter.WriteLine($"��{1}ҳ�����ꡣ", "Loader");
+                BetaVersionDebugPrinter.WriteLine($"第{1}页处理完。", "Loader");
 
-                //ʹ���첽�ȴ���������ʶ��
+                //使用异步等待方法加速识别
                 //ThreadPool.SetMaxThreads(3, 3);
                 //List<Task> ocrtaskList = new List<Task>();
                 for (int i = 1; i < pageCount; i++)
@@ -146,25 +146,25 @@ namespace DocTransAppBeta1
                     player.Dock = DockStyle.Fill;
                     float ratio = 0.0f;
                     int offset = 0;
-                    //Imageת��������
+                    //Image转输入张量
                     var input_tensor = DocLayoutAnalyzer.ConvertImageToTensor(img, out ratio, out offset);
-                    //����
+                    //推理
                     var inference_result = analyzer.Inference(input_tensor);
-                    //������������е�ƫ��Ӱ��
+                    //消除输出张量中的偏移影响
                     DocLayoutAnalyzer.OutputFittingWithRatio(ref inference_result, ratio, offset);
-                    //��ÿɶ��������������
+                    //获得可读的推理结果集合
                     var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
                     //current_page_layout_collection = collection;
                     player.Image = img;
                     player.Collection = collection;
                     player.Collection = null;
-                    //��ҳ��Player�ʹ������Collection����ҳ����
+                    //把页的Player和处理完的Collection塞进页缓存
                     PageCache.Add(KeyValuePair.Create<DocImPlayer, DocLayoutCollection>(player, collection));
-                    BetaVersionDebugPrinter.WriteLine($"��{i + 1}ҳ�����ꡣ", "Loader");
+                    BetaVersionDebugPrinter.WriteLine($"第{i + 1}页处理完。", "Loader");
                 }
                 //Task.WaitAll(ocrtaskList.ToArray());
 
-                //��ʼ��һЩUI�ؼ�
+                //初始化一些UI控件
                 label_maxPageCount.Text = "/" + pageCount;
                 numericUpDown_pageSelector.Value = 1;
                 numericUpDown_pageSelector.Minimum = 1;
@@ -182,10 +182,10 @@ namespace DocTransAppBeta1
                 //var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
                 //current_page_layout_collection = collection;
             }
-            //ǿ�ƻ�������
+            //强制回收垃圾
             System.GC.Collect();
         }
-        //������޸�ģʽΪ�鿴ģʽ��û�����أ�
+        //下面的修改模式为查看模式，没框（隐藏）
         private void radioButton_lookingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && radioButton_lookingMode.Checked)
@@ -197,7 +197,7 @@ namespace DocTransAppBeta1
             }
 
         }
-        //Ԥ��ģʽ������Collection��Image
+        //预览模式，绘制Collection到Image
         private void radioButton_viewingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && current_page_layout_collection != null && radioButton_viewingMode.Checked)
@@ -210,7 +210,7 @@ namespace DocTransAppBeta1
                 comboBox1.SelectedIndex = 10;
             }
         }
-        //�༭ģʽ������Ҫ�ģ���������
+        //编辑模式，最重要的，调整版面
         private void radioButton_editingMode_CheckedChanged(object sender, EventArgs e)
         {
             if (current_page != null && current_page_layout_collection != null && radioButton_editingMode.Checked)
@@ -221,7 +221,7 @@ namespace DocTransAppBeta1
                 docImPlayer.Image = current_page;
             }
         }
-        //����
+        //弃用
         [Obsolete]
         public List<DocImLabelBox> FetchListBox()
         {
@@ -233,7 +233,7 @@ namespace DocTransAppBeta1
             }
             return lbx;
         }
-        //ûɶ��
+        //没啥用
         private void MainForm_Load(object sender, EventArgs e)
         {
             listBox1.DisplayMember = "__g";
@@ -243,9 +243,9 @@ namespace DocTransAppBeta1
             //PaddleOCR.PaddleOCR.Initialize();
             //PaddleOCR.PaddleOCR.Recognize();
         }
-        //ҳ����
+        //页缓存
         public List<KeyValuePair<DocImPlayer, DocLayoutCollection>> PageCache = new List<KeyValuePair<DocImPlayer, DocLayoutCollection>>();
-        //�л�ҳ����ҳ����PageCache��ȡ�����õĽ��
+        //切换页，从页缓存PageCache读取处理好的结果
         private void numericUpDown_pageSelector_ValueChanged(object sender, EventArgs e)
         {
             if (document != null)
@@ -259,7 +259,7 @@ namespace DocTransAppBeta1
                 //DocLayoutAnalyzer.OutputFittingWithRatio(ref inference_result, ratio, offset);
                 //var collection = DocLayoutAnalyzer.DocLayoutInferenceResultTransform(inference_result);
 
-                //�����л�UI�ж�Ӧ�Ŀؼ�
+                //就是切换UI中对应的控件
                 panel1.Controls.Clear();
                 panel2.Controls.Clear();
                 var pg = PageCache[(int)(numericUpDown_pageSelector.Value - 1)];
@@ -272,7 +272,7 @@ namespace DocTransAppBeta1
                 panel1.Controls.Add(docImPlayer);
                 panel2.Controls.Add(docImPlayer.listBox);
             }
-            //�л���ѡ����ʾģʽ������
+            //切换单选框显示模式的续集
             if (current_page != null && current_page_layout_collection != null && radioButton_editingMode.Checked)
             {
                 //var image = DocLayoutAnalyzer.DrawBoundingBoxesOnImage(current_page, current_page_layout_collection);
@@ -302,7 +302,7 @@ namespace DocTransAppBeta1
                 radioButton_setPageAsFixed.Checked = true;
             else radioButton_setPageAsFlowLayouted.Checked = true;
         }
-        //֪ͨ������ѡ�п򣬣��ɿ�ҳ������
+        //通知主窗体选中框，（可跨页保留）
         //internal void NotifySelectedLabelBox(DocImLabelBox labelBox)
         //{
         //    //GetContainer().NotifySelectLabelBox();
@@ -328,10 +328,10 @@ namespace DocTransAppBeta1
         //    //throw new NotImplementedException();
         //    return selectedLabelBox;
         //}
-        //������
+        //看链表
         private void button_msgBoxShowLinkNode_Click(object sender, EventArgs e)
         {
-            //������������Ļ������Ҳһ�����û��
+            //如果舍弃链表的话，这个也一点β用没有
             StringBuilder sb = new StringBuilder();
             DocImLabelBox? curr = docImPlayer.HeadLabelBox;
             while (curr != null)
@@ -352,34 +352,34 @@ namespace DocTransAppBeta1
             //DocImLabelBox? headLabelBox_forFlowLayout = null;
             numericUpDown_pageSelector.Value = 1;
         }
-        //��Ŀǰ��ʾ��ҳ��������
+        //把目前显示的页保存下来
         private void button_saveImageFrame_Click(object sender, EventArgs e)
         {
-            saveFileDialog.Title = "������ҳ";
+            saveFileDialog.Title = "保存标记页";
             if (saveFileDialog.ShowDialog() == DialogResult.OK && current_page != null && current_page_layout_collection != null)
                 DocLayoutAnalyzer.
                     DrawBoundingBoxesOnImage(current_page, current_page_layout_collection)
                     .Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
         }
         //public bool IsFixedPage { get; set; }
-        //����Ϊ�̶�ҳ
+        //设置为固定页
         private void radioButton_setPageAsFixed_CheckedChanged(object sender, EventArgs e)
         {
             docImPlayer.IsFixedPage = true;
         }
-        //����Ϊ�Զ�ҳ
+        //设置为自动页
         private void radioButton_setPageAsFlowLayouted_CheckedChanged(object sender, EventArgs e)
         {
             docImPlayer.IsFixedPage = false;
         }
-        //���ض�Ӧpanel��
+        //加载对应panel到
         internal void LoadPanel(ConfigPanel panel)
         {
             //throw new NotImplementedException();
             labelBoxConfigPanel.Controls.Clear();
             labelBoxConfigPanel.Controls.Add((UserControl)panel);
         }
-        //֪ͨѡ����ĳBox������UI
+        //通知选中了某Box，更新UI
         internal void NotifiedByDocImPlayerForEventOccurred()
         {
             var label = docImPlayer.SelectedLabelBox;
@@ -393,9 +393,9 @@ namespace DocTransAppBeta1
             docImPlayer.Invalidate();
         }
         /// <summary>
-        /// ����Ҫ�ĺ�������ҳ�����
-        /// ���ܲ����ӣ����ǆ��£�Ҫ��Ը�������д���һ���ķ�����
-        /// Ŀǰû�ҵ����������ķ���sorry
+        /// 很重要的函数——页面解析
+        /// 功能不复杂，就是啰嗦，要针对各种类型写差不多一样的方法，
+        /// 目前没找到降低行数的方法sorry
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -431,9 +431,33 @@ namespace DocTransAppBeta1
                 => OllamaApis.TranslateHTMLSync(html, out output);
         }
 
+        public class DeepSeekAdapter : LanguageModel
+        {
+            public void DoTextSegment(string input, out string output)
+                => DeepSeek.DoTextSegmentSync(input, out output);
+
+            public void TranslateText(string input, out string output)
+                => DeepSeek.TranslateTextSync(input, out output);
+
+            public void TranslateHTML(string html, out string output)
+                => DeepSeek.TranslateHTMLSync(html, out output);
+        }
+
+        public class DeepSeekLangChainAdapter : LanguageModel
+        {
+            public void DoTextSegment(string input, out string output)
+                => DeepSeekLangChain.DoTextSegmentSync(input, out output);
+
+            public void TranslateText(string input, out string output)
+                => DeepSeekLangChain.TranslateTextSync(input, out output);
+
+            public void TranslateHTML(string html, out string output)
+                => DeepSeekLangChain.TranslateHTMLSync(html, out output);
+        }
+
         public static class Translator
         {
-            private static LanguageModel _current = new ChatGPTAdapter(); // Ĭ��
+            private static LanguageModel _current = new DeepSeekLangChainAdapter(); // 默认
 
             public static void UseModel<T>() where T : LanguageModel, new()
                 => _current = new T();
@@ -456,7 +480,7 @@ namespace DocTransAppBeta1
             //}
             //catch
             //{
-            //    BetaVersionDebugPrinter.WriteLine("�������󣬿�����ûNext����Select", "_markAsHead");
+            //    BetaVersionDebugPrinter.WriteLine("发生错误，可能是没Next或者Select", "_markAsHead");
             //}
             DocTransDocument document = new DocTransDocument();
             List<DocTransPage> pages = new List<DocTransPage>();
@@ -466,17 +490,17 @@ namespace DocTransAppBeta1
                 var uts = kvp.Key;
                 if (uts.HeadLabelBox == null && !uts.IsFixedPage)
                 {
-                    //MessageBox.Show($"����{i + 1}ҳû��ҳͷ��");
+                    //MessageBox.Show($"警告{i + 1}页没有页头。");
                     //return;
                 }
                 var page = uts.CurrentPage;
 
                 pages.Add(page);
-                BetaVersionDebugPrinter.WriteLine($"������{i}ҳ��", "parser");
+                BetaVersionDebugPrinter.WriteLine($"导出第{i}页了", "parser");
             }
-            BetaVersionDebugPrinter.WriteLine($"�����ṹ�����", "parser");
+            BetaVersionDebugPrinter.WriteLine($"导出结构体完成", "parser");
             if (true)
-                //�������루�Զ��׼����߼���
+                //启动翻译（显而易见的逻辑）
                 foreach (var pg in pages)
                 {
                     if (pg.IsFixedPage)
@@ -672,24 +696,24 @@ namespace DocTransAppBeta1
                         }
                     }
 
-                    BetaVersionDebugPrinter.WriteLine("���һҳ��", "parser");
+                    BetaVersionDebugPrinter.WriteLine("完成一页了", "parser");
                     //pg
                 }
             MainForm.ProcPages = pages;
-            //����������ִ�з��루����ɷ��룩
+            //对所有引用执行翻译（如果可翻译）
 
         }
 
         private void button_AutoRelation_Click(object sender, EventArgs e)
         {
-            //listboxѡ����ɾ��
+            //listbox选中项删除
             try
             {
                 listBox1.Items.Remove(listBox1.SelectedItem);
             }
             catch
             {
-                BetaVersionDebugPrinter.WriteLine("ɾ��ʧ����", "DellistBox1");
+                BetaVersionDebugPrinter.WriteLine("删除失败了", "DellistBox1");
             }
 
         }
@@ -699,9 +723,9 @@ namespace DocTransAppBeta1
             docImPlayer.IsContentsPage = checkBox1.Checked;
         }
         /// <summary>
-        /// �������Ҫ������һ������ҳ���������֧��
-        /// QuestPDF����ĵ�д�ĺ�����������C#
-        /// ��ô��PDF��������������ù�����ȫ��
+        /// 这里很重要，整个一函数是页面解析器的支持
+        /// QuestPDF库的文档写的很清楚很清楚，C#
+        /// 这么多PDF构件库里面最好用功能最全的
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -709,7 +733,7 @@ namespace DocTransAppBeta1
         {
             if (MainForm.ProcPages.Count == 0)
             {
-                MessageBox.Show("û�н��������б���", "����", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("没有解析对象列表。", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             try
@@ -732,15 +756,15 @@ namespace DocTransAppBeta1
                         //page.PageColor(Colors.White);
                         //page.DefaultTextStyle(x => x.FontSize(20));
                         //page.Header.
-                        ////page.Header().Text("QuestPDF����").SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
+                        ////page.Header().Text("QuestPDF测试").SemiBold().FontSize(36).FontColor(Colors.Blue.Medium);
                         //page.Content().PaddingVertical(1, Unit.Centimetre).Column(x => {
                         //    x.Spacing(20);
-                        //    x.Item().Text("����ҳü����");
+                        //    x.Item().Text("这是页眉内容");
                         //    //x.Item().Image("path/to/image.jpg", ImageScaling.Resize);
                         //});
-                        //page.Footer().AlignCenter().Text(x => x.Span("ҳ�� "));
-                        // ʹ��Canvas���о��Զ�λ
-                        // �Զ����ֵ��ı�����
+                        //page.Footer().AlignCenter().Text(x => x.Span("页码 "));
+                        // 使用Canvas进行绝对定位
+                        // 自动布局的文本内容
                         //page.Content().Box();
                         /*page.Content().Row(row =>
                         {
@@ -751,7 +775,7 @@ namespace DocTransAppBeta1
                         {
                             //column.RelativeItem()
 
-                            column.Spacing(10); // ���ö���֮��ļ��10
+                            column.Spacing(10); // 设置段落之间的间距10
                             for (int i = 0; i < MainForm.ProcPages.Count; i++)
                             {
                                 var pg = MainForm.ProcPages[i];
@@ -884,7 +908,7 @@ namespace DocTransAppBeta1
                                 }
                                 else if (pg.IsContentsPage)
                                 {
-                                    //����Ŀ¼ҳ���߼�
+                                    //处置目录页的逻辑
                                 }
                                 else
                                 {
@@ -898,7 +922,7 @@ namespace DocTransAppBeta1
                             {
                                 // control number of columns, default is 2
                                 multiColumn.Columns(2);
-                                // ������Ҫ�ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ������
+                                // 超级重要非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！
                                 multiColumn.BalanceHeight(true);
                                 // control space between columns, default is 0
                                 multiColumn.Spacing(25);
@@ -922,7 +946,7 @@ namespace DocTransAppBeta1
                             });
                             column.Item().PageBreak();*/
 
-                            //Unconstrained �ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ�������ǳ���Ҫ������
+                            //Unconstrained 非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！非常重要！！！
                             //column.Item().Unconstrained().TranslateX(374 - 50).TranslateY(39 - 50).Width(186).Height(76)
                             //    .Image("C:\\Users\\56279\\Desktop\\Title_Intel.png");
 
@@ -951,28 +975,28 @@ namespace DocTransAppBeta1
                     });
                     //container.Column(col => xxxxx
                     //{
-                    //    // ��������
-                    //    col.Item().Text("���б���").FontSize(16);
+                    //    // 单列区域
+                    //    col.Item().Text("单列标题").FontSize(16);
                     //    col.Item().Text(Placeholders.LoremIpsum());
 
-                    //    // ˫��Ƕ��
+                    //    // 双列嵌套
                     //    col.Item().Row(row =>
                     //    {
                     //        row.RelativeItem().Column(subCol =>
                     //        {
-                    //            subCol.Item().Text("��������");
+                    //            subCol.Item().Text("左栏内容");
                     //            subCol.Item().Image(Placeholders.Image(200, 100));
                     //        });
 
                     //        row.RelativeItem().Column(subCol =>
                     //        {
-                    //            subCol.Item().Text("��������");
+                    //            subCol.Item().Text("右栏内容");
                     //            subCol.Item().Image(Placeholders.Image(200, 100));
                     //        });
                     //    });
 
-                    //    // ������������
-                    //    col.Item().Text("��������").FontColor(Colors.Red);
+                    //    // 继续单列内容
+                    //    col.Item().Text("后续内容").FontColor(Colors.Red);
                     //});
                 }).GeneratePdfAndShow(); //("C:\\Users\\56279\\Desktop\\Output2.pdf");////
             }
@@ -981,10 +1005,10 @@ namespace DocTransAppBeta1
                 MessageBox.Show(ex.Message);
             }
         }
-        //���涼�Ǹ��ı��޸����Ĵ�����ô���
+        //下面都是富文本修改器的窗体调用代码
         private void button1_Click(object sender, EventArgs e)
         {
-            //listbox���
+            //listbox清空
             listBox1.Items.Clear();
         }
 
@@ -999,16 +1023,16 @@ namespace DocTransAppBeta1
         {
             if (MainForm.ProcPages == null)
             {
-                MessageBox.Show("��û�������ɣ�");
+                MessageBox.Show("还没处理过吧？");
                 return;
             }
             PagesEditor pe = new PagesEditor(MainForm.ProcPages);
             pe.ShowDialog();
         }
-        //����XML
+        //保存XML
         private void button3_Click(object sender, EventArgs e)
         {
-            //Xml����~
+            //Xml解析~
             DocTransObjSerializer serial = new DocTransObjSerializer();
             string xml2 = "";
             var pages = MainForm.ProcPages;
